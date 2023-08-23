@@ -1,3 +1,7 @@
+from rest_framework import viewsets
+from home.models import GGH,BBN,BBN,GGH,BBN,GGH
+from .serializers import GGHSerializer,BBNSerializer,BBNSerializer,GGHSerializer,BBNSerializer,GGHSerializer
+from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
 from rest_framework.authtoken.models import Token
@@ -28,3 +32,13 @@ class LoginViewSet(ViewSet):
         token, created = Token.objects.get_or_create(user=user)
         user_serializer = UserSerializer(user)
         return Response({"token": token.key, "user": user_serializer.data})
+
+class GGHViewSet(viewsets.ModelViewSet):
+    serializer_class = GGHSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = GGH.objects.all()
+
+class BBNViewSet(viewsets.ModelViewSet):
+    serializer_class = BBNSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = BBN.objects.all()
