@@ -9,4 +9,4 @@ class GGH(models.Model):
     rel_user_1_n = models.ForeignKey("users.User",blank=True,null=True,on_delete=models.CASCADE,related_name="ggh_rel_user_1_n",)
 class BBN(models.Model):
     'Generated Model'
-    wef = models.BigIntegerField()
+    wejjk = models.BigIntegerField(blank=True,null=True,)
